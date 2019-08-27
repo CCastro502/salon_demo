@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS salon_demo;
+CREATE DATABASE salon_demo;

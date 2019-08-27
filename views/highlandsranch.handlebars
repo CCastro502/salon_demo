@@ -1,0 +1,79 @@
+<div class="salon-nav">
+    <div class="nav-section">
+        <h1>Highlands Ranch</h1>
+    </div>
+    <div class="nav-section">
+        <h2><a href="/highlandsranch">Schedule</a></h2>
+        <h2><a href="/highlandsranch/services">Services</a></h2>
+        <h2><a href="/highlandsranch/about">About Us</a></h2>
+    </div>    
+</div>
+<div class="background-img">
+    <div class='background-img-color'>
+        <div class="schedule-type-container">
+            <h3 class="schedule-type active" id="book">Book</h3>
+            <h3>/</h3>
+            <h3 class="schedule-type" id="walk">Walk-In</h3>
+        </div>
+        <div class="salon-calendar">
+            {{#each days}}
+            <div class='salon-calendar-day'>
+                <h3>{{this.monthName}}</h3>
+                <h3>{{this.date}}</h3>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+</div>
+<select id="salon-select-artist" value="0">
+    <option value="0">No Preffered Salon Artist</option>
+    <option value="1">Britney</option>
+    <option value="2">Whitney</option>
+    <option value="3">Houston</option>
+    <option value="4">Sanchez</option>
+</select>
+<div class='salon-schedule-bottom-row'>
+    <div class='appt-type bottom-row'>
+        <div class='service-card'>
+            <h4>This type</h4>
+        </div>
+        <div class='service-card'>
+            <h4>That type</h4>
+        </div>
+        <div class='service-card'>
+            <h4>This type</h4>
+        </div>
+        <div class='service-card'>
+            <h4>That type</h4>
+        </div>
+        <div class='service-card'>
+            <h4>This type</h4>
+        </div>
+        <div class='service-card'>
+            <h4>That type</h4>
+        </div>
+        <div class='service-card'>
+            <h4>This type</h4>
+        </div>
+        <div class='service-card'>
+            <h4>That type</h4>
+        </div>
+        <div class='service-card'>
+            <h4>This type</h4>
+        </div>
+        <div class='service-card'>
+            <h4>That type</h4>
+        </div>
+        <div class='service-card'>
+            <h4>This type</h4>
+        </div>
+        <div class='service-card'>
+            <h4>That type</h4>
+        </div>
+    </div>
+    <div class='appt-specifics bottom-row'>
+
+    </div>
+</div>
+
+<script src="/assets/js/home.js"></script>
