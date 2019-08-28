@@ -109,6 +109,15 @@ module.exports = function (app) {
 
     })
 
+    // app.get("/highlandsranch/:num", function (req, res) {
+    //     const lastDayThisMonth = parseInt(moment().endOf('month').format('DD'));
+    //     const lastDayNextMonth = parseInt(moment(`${year} ${parseInt(monthNum) + 1 >= 10 ? parseInt(monthNum) + 1: `0${parseInt(monthNum) + 1}`}`, 'YYYY MM').endOf('month').format('DD'));
+        
+    //     for (i = 0; i < 7; i++) {
+
+    //     }
+    // })
+
     app.get("/admin", function (req, res) {
         res.render("admin");
     })

@@ -58,15 +58,18 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-family: sans-serif;
+    font-size: 35px;
+    font-family: 'Raleway', sans-serif;
     letter-spacing: 1.2px;
     color: honeydew;
 }
 
 .nav-section h2 {
-    margin-left: 25px;
+    margin-left: 45px;
+    letter-spacing: 1.25px;
     font-family: sans-serif;
-    font-size: 1.35rem;
+    font-size: 2rem;
+    font-family: 'Dancing Script', cursive;
 }
 
 .nav-section h2 a {
@@ -186,7 +189,7 @@ h3.active {
     margin: 0 15px 15px 0;
     width: 150px;
     height: 150px;
-    box-shadow: 5px 10px rgba(211,211,211,0.95);
+    box-shadow: 5px 7px rgba(211,211,211,0.95);
     border-style: solid;
     border-width: 1px;
     border-radius: 10px;
