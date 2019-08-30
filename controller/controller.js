@@ -70,6 +70,30 @@ module.exports = function (app) {
     app.get("/highlandsranch", function (req, res) {
         const lastDay = parseInt(moment().endOf('month').format('DD'));
         
+        // var count = 10;
+        // var timeMenu = ""
+        // for (i = 0; i < 9; i++) {
+        //     if (i < 2) {
+        //         timeMenu += `
+        //         <option value='${count}:00'>${count}:00 AM</option>
+        //         <option value='${count}:15'>${count}:15 AM</option>
+        //         <option value='${count}:30'>${count}:30 AM</option>
+        //         <option value='${count}:45'>${count}:45 AM</option>`;
+        //     } else {
+        //         timeMenu += `
+        //         <option value='${count}:00'>${count}:00 PM</option>
+        //         <option value='${count}:15'>${count}:15 PM</option>
+        //         <option value='${count}:30'>${count}:30 PM</option>
+        //         <option value='${count}:45'>${count}:45 PM</option>`;
+        //     }
+        //     if (count === 12) {
+        //         count = 1;
+        //     } else {
+        //         count++;
+        //     }
+        // }
+        // console.log(timeMenu)
+        
         function getWeek() {
             var thisWeek = [];
             var thisDate;
@@ -107,9 +131,46 @@ module.exports = function (app) {
             days: getWeek()
         });
 
-    })
+    });
+
+    app.get("/highlandsranch/:num", function (req, res) {
+        const lastDayThisMonth = parseInt(moment().endOf('month').format('DD'));
+        const lastDayNextMonth = parseInt(moment(`${year} ${monthNum + 1 >= 10 ? monthNum + 1: `0${monthNum + 1}`}`, 'YYYY MM').endOf('month').format('DD'));
+        
+        
+        function getWeek() {
+            var lowerLimit = dayNum + (parseInt(req.params.num) * 7);
+            var upperLimit = dayNum + 7 + (parseInt(req.params.num) * 7);
+            var thisWeek = [];
+
+            for (i = 0; i < 7; i++) {
+                if (lowerLimit + i > lastDayThisMonth + lastDayNextMonth) {
+                    thisWeek = [...thisWeek, {
+                        monthName: moment(`${year} ${monthNum + 2 >= 10 ? monthNum + 2: `0${monthNum + 2}`}`, 'YYYY MM').format('MMM'),
+                        date: (lowerLimit + i) - (lastDayThisMonth + lastDayNextMonth)
+                    }]
+                } else if (lowerLimit + i > lastDayThisMonth ) {
+                    thisWeek = [...thisWeek, {
+                        monthName: moment(`${year} ${monthNum + 1 >= 10 ? monthNum + 1: `0${monthNum + 1}`}`, 'YYYY MM').format('MMM'),
+                        date: (lowerLimit + i) - (lastDayThisMonth)
+                    }]
+                } else {
+                    thisWeek = [...thisWeek, {
+                        monthName: monthName,
+                        date: lowerLimit + i
+                    }]
+                }
+            }
+
+            return thisWeek;
+        }
+
+        res.render("highlandsranch", {
+            days: getWeek()
+        });
+    });
 
     app.get("/admin", function (req, res) {
         res.render("admin");
-    })
+    });
 }
