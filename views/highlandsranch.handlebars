@@ -16,65 +16,59 @@
             <h3>/</h3>
             <h3 class="schedule-type" id="walk">Walk-In</h3>
         </div>
-        <div class="salon-calendar">
-            {{#each days}}
-            <div class='salon-calendar-day'>
-                <h3>{{this.monthName}}</h3>
-                <h3>{{this.date}}</h3>
+        <div class="salon-calendar-container">
+            <div class="salon-calendar">
+                {{#each days}}
+                <div class='salon-calendar-day'>
+                    <h3>{{this.monthName}}</h3>
+                    <h3>{{this.date}}</h3>
+                </div>
+                {{/each}}
             </div>
-            {{/each}}
+            <a id='next-week'>
+                &#8250;
+            </a>
         </div>
     </div>
 </div>
-<select id="salon-select-artist" value="0">
-    <option value="0">No Preffered Salon Artist</option>
-    <option value="1">Britney</option>
-    <option value="2">Whitney</option>
-    <option value="3">Houston</option>
-    <option value="4">Sanchez</option>
-</select>
-<div class='salon-schedule-bottom-row'>
-    <div class='appt-type bottom-row'>
-        <div class='service-card'>
-            <h4>This type</h4>
+<div class='salon-schedule-bottom'>
+
+    <div class='salon-schedule-bottom-box'>
+
+        <h2>Design Your Trip</h2>
+
+        <div class='salon-schedule-bottom-row'>
+            <select class='salon-select' id="salon-select-artist" value="0">
+                <option value="0">No Preffered Salon Artist</option>
+                <option value="1">Britney</option>
+                <option value="2">Whitney</option>
+                <option value="3">Houston</option>
+                <option value="4">Sanchez</option>
+            </select>
         </div>
-        <div class='service-card'>
-            <h4>That type</h4>
+
+        <div class='salon-schedule-bottom-row'>
+            <div class='add-service'>+</div>
+            <select class='salon-select salon-select-service' value="0">
+                <option value="0">Pedicure</option>
+                <option value="1">Manicure</option>
+                <option value="2">Gels</option>
+                <option value="3">Shellac</option>
+                <option value="4">Painting</option>
+            </select>
+            <select class='salon-select salon-select-type' value="0">
+                <option value="0">Classic</option>
+                <option value="1">Spa</option>
+                <option value="2">French</option>
+                <option value="3">Athletic</option>
+                <option value="4">Stone</option>
+            </select>
         </div>
-        <div class='service-card'>
-            <h4>This type</h4>
-        </div>
-        <div class='service-card'>
-            <h4>That type</h4>
-        </div>
-        <div class='service-card'>
-            <h4>This type</h4>
-        </div>
-        <div class='service-card'>
-            <h4>That type</h4>
-        </div>
-        <div class='service-card'>
-            <h4>This type</h4>
-        </div>
-        <div class='service-card'>
-            <h4>That type</h4>
-        </div>
-        <div class='service-card'>
-            <h4>This type</h4>
-        </div>
-        <div class='service-card'>
-            <h4>That type</h4>
-        </div>
-        <div class='service-card'>
-            <h4>This type</h4>
-        </div>
-        <div class='service-card'>
-            <h4>That type</h4>
-        </div>
-    </div>
-    <div class='appt-specifics bottom-row'>
+
+        <button class='btn btn-success'>Book Now</button>
 
     </div>
+
 </div>
 
 <script src="/assets/js/home.js"></script>
