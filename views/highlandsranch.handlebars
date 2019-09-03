@@ -17,6 +17,9 @@
             <h3 class="schedule-type" id="walk">Walk-In</h3>
         </div>
         <div class="salon-calendar-container">
+            <a id='prev-week'>
+                &#8249;
+            </a>
             <div class="salon-calendar">
                 {{#each days}}
                 <div class='salon-calendar-day'>
@@ -45,18 +48,25 @@
                 <option value="3">Houston</option>
                 <option value="4">Sanchez</option>
             </select>
+            <select class='salon-select' id="salon-select-time" value="0">
+                <option value="0">10:00 AM</option>
+                <option value="1">10:30 AM</option>
+                <option value="2">11:00 AM</option>
+                <option value="3">11:30 AM</option>
+                <option value="4">12:00 PM</option>
+            </select>
         </div>
 
         <div class='salon-schedule-bottom-row'>
-            <div class='add-service'>+</div>
-            <select class='salon-select salon-select-service' value="0">
+            <div class='adj-service add-service'>+</div>
+            <select class='salon-select' value="0">
                 <option value="0">Pedicure</option>
                 <option value="1">Manicure</option>
                 <option value="2">Gels</option>
                 <option value="3">Shellac</option>
                 <option value="4">Painting</option>
             </select>
-            <select class='salon-select salon-select-type' value="0">
+            <select class='salon-select' value="0">
                 <option value="0">Classic</option>
                 <option value="1">Spa</option>
                 <option value="2">French</option>
@@ -65,7 +75,9 @@
             </select>
         </div>
 
-        <button class='btn btn-success'>Book Now</button>
+        <div id='ela'>ELA: 30 minutes</div>
+
+        <button class='schedule-appt'>Book Now</button>
 
     </div>
 

@@ -6,7 +6,7 @@ $(document).ready(function() {
             data: { logInKey: logInKey }
         }).then(function(response) {
             if (response.success) {
-                $("#admin").html(response.html);
+                $("#admin").html(response.html).css({ "background-color": 'white' });
                 return;
             } else {
                 window.location.href = window.location.origin;
@@ -63,7 +63,7 @@ $(document).ready(function() {
                 </div>
                 </div>
             </div>`
-        );
+        )        
     };
 
     $('#register_user').on('click', function() {
@@ -129,4 +129,42 @@ $(document).ready(function() {
             alert("You did not enter a username and/or password");
         }
     });
+
+    $("#admin").on('click', '.admin-nav .admin-nav-items', function() {
+        var $this = this;
+        if ( $(".admin-nav h3.active").text() !== $($this).text() ) {
+            
+            $('.admin-nav .admin-nav-items').each(function (index) {
+
+                $('.admin-nav .admin-nav-items').index($this) !== index ? $(this).removeClass('active'): $(this).addClass('active');
+
+            });
+
+        } else {
+            return;
+        }
+
+        if ( $('.admin-nav .admin-nav-items.active').text() === 'Employees' ) {
+            $("#maintain").html(
+                `<h4>List of Employees</h4>
+                <ul></ul>
+                <p class='admin-add-employee'>Add employee</p>`
+            );
+        } else {
+            $("#maintain").html('Shifts go here')
+        }
+    });
+
+    $("#add_employee").on('click', function(event) {
+        event.preventDefault();
+        console.log("Name", $("#employee_name").val());
+        console.log("Location", $("#employee_location").val());
+    });
+
+
+    $("#admin").on('click', '#maintain .admin-add-employee', function () {
+        $('#add_employee_modal').modal();
+    });
+
+    
 });

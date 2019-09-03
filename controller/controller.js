@@ -43,16 +43,42 @@ module.exports = function (app) {
             res.json({
                 success: 1,
                 html: 
-                `<div id='admin-nav'>
-                    <div class='admin-nav-item active' id='nav-shifts'>
-                        <h3>Shifts</h3>
-                    </div>
-                    <div class='admin-nav-item' id='nav-employees'>
-                        <h3>Employees</h3>
-                    </div>
+                `<div class='admin-nav'>
+                    <h1 class='admin-nav-items active'>Shifts</h1>
+                    <h1 class='admin-nav-items'>Employees</h1>
                 </div>
-                <div id='maintain-shifts'>
+                <div id='maintain'>
                     <p id='add-shifts'>Add Shifts</p>
+                    <div class='admin-employee-calendar'></div>
+                </div>
+                <div class="modal" tabindex="-1" role="dialog" id='add_employee_modal'>
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Add New Employee</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <label for='employee_name'>
+                                Name: <br />
+                                    <input type='text' id='employee_name' name='employee_name' />
+                                </label>
+                                <br />
+                                <br />
+                                <label for='employee_location'>
+                                Location: <br />
+                                    <select id='employee_location' name='employee_location'>
+                                        <option value='highlandsranch'>Highlands Ranch</option>
+                                    </select>
+                                </label>
+                                <br />
+                                <br />
+                                <button type='submit' id='add_employee'>Hello</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>`
             });
         } else {
@@ -61,38 +87,14 @@ module.exports = function (app) {
                 success: 0,
             });
         }
-    })
+    });
 
     app.get("/", function (req, res) {
-        res.render("index")
+        res.render("index");
     });
 
     app.get("/highlandsranch", function (req, res) {
         const lastDay = parseInt(moment().endOf('month').format('DD'));
-        
-        // var count = 10;
-        // var timeMenu = ""
-        // for (i = 0; i < 9; i++) {
-        //     if (i < 2) {
-        //         timeMenu += `
-        //         <option value='${count}:00'>${count}:00 AM</option>
-        //         <option value='${count}:15'>${count}:15 AM</option>
-        //         <option value='${count}:30'>${count}:30 AM</option>
-        //         <option value='${count}:45'>${count}:45 AM</option>`;
-        //     } else {
-        //         timeMenu += `
-        //         <option value='${count}:00'>${count}:00 PM</option>
-        //         <option value='${count}:15'>${count}:15 PM</option>
-        //         <option value='${count}:30'>${count}:30 PM</option>
-        //         <option value='${count}:45'>${count}:45 PM</option>`;
-        //     }
-        //     if (count === 12) {
-        //         count = 1;
-        //     } else {
-        //         count++;
-        //     }
-        // }
-        // console.log(timeMenu)
         
         function getWeek() {
             var thisWeek = [];
@@ -133,6 +135,15 @@ module.exports = function (app) {
 
     });
 
+    app.get("/highlandsranch/services", function (req, res) {
+        res.render("services");
+    })
+
+    app.get("/highlandsranch/about", function (req, res) {
+        res.render("about");
+    })
+
+
     app.get("/highlandsranch/:num", function (req, res) {
         const lastDayThisMonth = parseInt(moment().endOf('month').format('DD'));
         const lastDayNextMonth = parseInt(moment(`${year} ${monthNum + 1 >= 10 ? monthNum + 1: `0${monthNum + 1}`}`, 'YYYY MM').endOf('month').format('DD'));
@@ -165,9 +176,7 @@ module.exports = function (app) {
             return thisWeek;
         }
 
-        res.render("highlandsranch", {
-            days: getWeek()
-        });
+        res.json({ days: getWeek() });
     });
 
     app.get("/admin", function (req, res) {
