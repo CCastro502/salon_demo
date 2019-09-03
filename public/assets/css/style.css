@@ -14,6 +14,24 @@ body {
     background-color: whitesmoke;
 }
 
+.admin-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15vh;
+}
+
+.admin-nav h1 {
+    padding: 2px 3px;
+    margin: 0 5px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.admin-nav h1.active {
+    color: blue;
+}
+
 .salon-nav {
     padding-left: 15px;
     margin: 0;
@@ -131,10 +149,11 @@ h3.active {
 }
 
 .salon-calendar-container a {
-    margin-left: 15px;
+    margin: 0 15px;
     color: white;
     text-decoration: none;
     font-size: 55px;
+    cursor: pointer;
 }
 
 .salon-calendar {
@@ -199,6 +218,7 @@ h3.active {
     align-items: center;
     background-color: rgba(255, 255, 255, 0.95);
     border-radius: 15px;
+    transition: all 6s ease;
 }
 
 .salon-schedule-bottom-box h2 {
@@ -211,27 +231,114 @@ h3.active {
     align-items: center;
 }
 
-.add-service {
+.adj-service {
     width: 25px;
     border-width: 1.5px;
     border-style: outset;
     border-radius: 100%;
     background-color: rgb(220, 220, 220);
-    color: lime;
     font-size: 25px;
     font-weight: 900;
     text-align: center;
     cursor: pointer;
 }
 
+.add-service {
+    color: lime;
+}
+
+.del-service {
+    color: red;
+}
+
 .add-service:hover {
     color: green;
 }
 
-.add-service:active {
+.adj-service:active {
     border-style: inset;
 
 }
+
+button.schedule-appt {
+    width: 150px;
+    height: 50px;
+    font-size: 25px;
+    font-family: 'Dancing Script', cursive;
+    background: rgba(51, 0, 60, 0.75);
+    color: white;
+    border-radius: 5px;
+    /* border-width: 2px;
+    border-style: double;
+    border-color: white; */
+    
+}
+
+.services-img {
+    width: 100%;
+    min-height: 88vh;
+    background: rgba(51, 0, 60, 0.35);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.services-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80vw;
+    height: 225px;
+    border-style: double;
+    border-color: white;
+    border-radius: 10px;
+    margin: 5vh 0;
+}
+
+.services-card-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 64vw;
+    height: 100%;
+    border-right-style: solid;
+    border-right-width: 1.5px;
+    border-color: rgba(255, 255, 255, 0.75);
+}
+
+.services-card-right {
+    border-radius: 10px;
+    width: 100%;
+    height: 100%;
+    background: url("/assets/img/galery.jpg");
+    background-position: center;
+    background-size: 100%;
+}
+
+.services-card-title {
+    width: 64vw;
+    height: 50px;
+    border-bottom-style: solid;
+    border-bottom-color: rgba(255, 255, 255, 0.75);
+    border-bottom-width: 1.5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.services-card-description {
+    padding: 1vh 3vw;
+    width: 58vw;
+    height: 100%;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+}
+
 
 #login_container {
     position: absolute;
@@ -252,4 +359,9 @@ h3.active {
 #register_user {
     color: royalblue;
     align-self: flex-end;
+}
+
+#prev-week {
+    display: none;
+    transition: all 0.6s ease;
 }
